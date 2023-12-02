@@ -1,0 +1,3 @@
+
+// for create a new branch with instant switch in branch
+git checkout -b development
