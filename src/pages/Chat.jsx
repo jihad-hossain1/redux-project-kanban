@@ -15,11 +15,14 @@ const Chat = () => {
 
   return (
     <div className="bg-zinc-900 text-zinc-50">
+      <div>
+        <h4 className="py-6 text-center">Chat</h4>
+      </div>
       <div className="flex gap-5 items-center">
         <Link to={`/addPost`} className="bg-indigo-700 border p-3">
           Add-Post
         </Link>
-        <h1>Chat</h1>
+
         <button
           onClick={() => setIsOpen(!isopen)}
           className="bg-indigo-600 text-zinc-50 p-3"
