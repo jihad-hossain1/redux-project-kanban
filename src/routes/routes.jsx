@@ -6,6 +6,9 @@ import Settings from "../pages/Settings";
 import Profile from "../pages/Profile";
 import SingleChatDetails from "../pages/SingleChatDetails";
 import AddPost from "../components/AddPost";
+import SignUp from "../components/log/SignUp";
+import PrivateRoute from "./PrivateRoute";
+import SignIn from "../components/log/SignIn";
 const routes = createBrowserRouter([
   {
     path: "/",
@@ -17,7 +20,11 @@ const routes = createBrowserRouter([
       },
       {
         path: "/chat",
-        element: <Chat />,
+        element: (
+          <PrivateRoute>
+            <Chat />
+          </PrivateRoute>
+        ),
       },
 
       {
@@ -38,6 +45,14 @@ const routes = createBrowserRouter([
         element: <AddPost />,
       },
     ],
+  },
+  {
+    path: "/signup",
+    element: <SignUp />,
+  },
+  {
+    path: "/signin",
+    element: <SignIn />,
   },
 ]);
 

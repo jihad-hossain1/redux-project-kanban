@@ -1,11 +1,12 @@
 import { useState } from "react";
 import Modal from "../ui/Modal/Modal";
 import toast, { Toaster } from "react-hot-toast";
-import { useDispatch } from "react-redux";
-import { addTask } from "../../redux/features/tasks/taskSlice";
+import { useAddTaskMutation } from "../../redux/features/tasks/tasksApi";
 
 const AddTaskModal = ({ isOpen, setIsOpen }) => {
-  const distpatch = useDispatch();
+  const [addTask, { data, error }] = useAddTaskMutation();
+  console.log(error);
+  console.log(data);
   const handleChange = (e) => {
     const value = e.target.value;
     const name = e.target.name;
@@ -16,8 +17,6 @@ const AddTaskModal = ({ isOpen, setIsOpen }) => {
   };
 
   const handleCancel = () => {
-    // setFormData("");
-    // window.location.reload(true);
     setIsOpen(false);
   };
 
@@ -27,9 +26,8 @@ const AddTaskModal = ({ isOpen, setIsOpen }) => {
     if (title === "" || assignTo === "") {
       return toast.error("please fill the title & assign to");
     }
-    distpatch(addTask(formData));
-    console.log(formData);
-    // setFormData("");
+
+    addTask({ ...formData, status: "pending" });
     setIsOpen(false);
   };
 
